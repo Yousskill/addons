@@ -1,0 +1,55 @@
+<openerp>
+    <data>
+
+        <record id="view_serveur_form" model="ir.ui.view">
+            <field name="name">system</field>
+            <field name="model">serveur</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <group col="4" colspan="4">
+                        <field name="name"/>
+                        <newline/>
+                        <field name="ip"/>
+                        <field name="mac"/>
+                        <field name="user"/>
+                        <field name="password"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_serveur_filter" model="ir.ui.view">
+            <field name="name">serveur</field>
+            <field name="model">serveur</field>
+            <field name="arch" type="xml">
+                <search string="serveur">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_serveur_tree" model="ir.ui.view">
+            <field name="name">serveur.tree</field>
+            <field name="model">serveur</field>
+            <field name="arch" type="xml">
+                <tree toolbar="1" string="Instances">
+                    <field name="name"/>
+                        <field name="ip"/>
+                        <field name="mac"/>
+                        <field name="user"/>
+                        <field name="password"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_serveur_form" model="ir.actions.act_window">
+            <field name="name">Servers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">serveur</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_serveur_form" id="menu_serveur1" sequence="2" parent="menu_cmdb"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,61 @@
+<openerp>
+    <data>
+
+        <record id="view_project_landscape_form" model="ir.ui.view">
+            <field name="name">landscape</field>
+            <field name="model">project.landscape</field>
+            <field name="arch" type="xml">
+                <form string="Landscapes">
+                    <group col="4">
+                        <field name="name"/>
+
+                    </group>
+                    <label for="description"/>
+                    <field name="description" nolabel="1" colspan="1"/>
+                    <separator string="Instances"/>
+                    <field name="systeme_ids" nolabel="1" colspan="4">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="ip" widget="url"/>
+                            <field name="serveur_id"/>
+                            <field name="user"/>
+                            <field name="password"/>
+                        </tree>
+                    </field>
+
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_landscape_filter" model="ir.ui.view">
+            <field name="name">landscape</field>
+            <field name="model">project.landscape</field>
+            <field name="arch" type="xml">
+                <search string="landscape">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_landscape_tree" model="ir.ui.view">
+            <field name="name">landscape.tree</field>
+            <field name="model">project.landscape</field>
+            <field name="arch" type="xml">
+                <tree toolbar="1" string="Landscapes">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_landscape_form" model="ir.actions.act_window">
+            <field name="name">Landscapes</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.landscape</field>
+            <field name="view_type">form</field>
+        </record>
+        <menuitem name="CMDB" sequence="0" id="menu_cmdb" parent="base.menu_main_pm" groups="group_cmdb_manager"/>
+        <menuitem action="action_landscape_form" sequence="1" id="menu_landscape" parent="menu_cmdb"/>
+
+    </data>
+</openerp>

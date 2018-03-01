@@ -1,0 +1,48 @@
+<openerp>
+    <data>
+
+        <record id="view_database_server_form" model="ir.ui.view">
+            <field name="name">system</field>
+            <field name="model">database.server</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <group col="4" colspan="4">
+                        <field name="name"/>
+                        <field name="version"/>
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_database_server_filter" model="ir.ui.view">
+            <field name="name">database.server</field>
+            <field name="model">database.server</field>
+            <field name="arch" type="xml">
+                <search string="database.server">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_database_server_tree" model="ir.ui.view">
+            <field name="name">database.server.tree</field>
+            <field name="model">database.server</field>
+            <field name="arch" type="xml">
+                <tree toolbar="1" string="Instances">
+                    <field name="name"/>
+                    <field name="version"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_database_server_form" model="ir.actions.act_window">
+            <field name="name">DB servers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">database.server</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_database_server_form" id="menu_database_server" sequence="3" parent="menu_cmdb"/>
+
+    </data>
+</openerp>

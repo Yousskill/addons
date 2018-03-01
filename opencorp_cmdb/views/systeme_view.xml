@@ -1,0 +1,71 @@
+<openerp>
+    <data>
+
+        <record id="view_systeme_form" model="ir.ui.view">
+            <field name="name">system</field>
+            <field name="model">systeme</field>
+            <field name="arch" type="xml">
+                <form string="Module">
+                    <group col="4" colspan="4">
+                        <field name="landscape_id"/>
+                        <field name="name"/>
+                        <field name="ip" widget="url"/>
+                        <field name="serveur_id"/>
+                       <!-- <field name="mac"/>-->
+                        <field name="user"/>
+                        <field name="password"/>
+
+                    </group>
+                    <separator string="Databases"/>
+                    <field name="database_ids" nolabe="1"  colspan="4">
+                        <tree editable="bottom" string="Instances">
+                            <field name="name"/>
+                            <field name="user"/>
+                            <field name="password"/>
+                        </tree>
+                    </field>
+
+                </form>
+            </field>
+        </record>
+
+        <record id="view_systeme_filter" model="ir.ui.view">
+            <field name="name">Systeme</field>
+            <field name="model">systeme</field>
+            <field name="arch" type="xml">
+                <search string="Systeme">
+                    <field name="name"/>
+                    <group string="Group by...">
+                        <filter string="Application" context="{'group_by':'landscape_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="view_systeme_tree" model="ir.ui.view">
+            <field name="name">systeme.tree</field>
+            <field name="model">systeme</field>
+            <field name="arch" type="xml">
+                <tree toolbar="1" string="Instances">
+                    <field name="landscape_id"/>
+                    <field name="name"/>
+                    <field name="ip"/>
+                    <field name="serveur_id"/>
+                  <!--  <field name="mac"/>-->
+                    <field name="user"/>
+                    <field name="password"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_systeme_form" model="ir.actions.act_window">
+            <field name="name">Instances</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">systeme</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="action_systeme_form" id="menu_systeme" sequence="1" parent="menu_cmdb"/>
+
+    </data>
+</openerp>

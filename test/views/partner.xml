@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <odoo>
+
+        <!-- Add instructor field to existing view -->
+        <record model="ir.ui.view" id="partner_instructor_form_view">
+            <field name="name">partner.instructor.form</field>
+            <field name="model">openacademy.partner</field>
+            <field name="arch" type="xml">
+                <form string="Partner form">
+                    <notebook>
+                        <page string="Sessions">
+                            <group>
+                                <field name="name"/>
+                                <field name="instructor"/>
+                                <field name="session_ids"/>
+                                <field name="res_partner_id"/>
+                                <field name="instructor"/>
+                                <field name="category_id"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="partner_instructor_form_view_inherit" model="ir.ui.view">
+            <field name="name">partner.instructor.form</field>
+            <field name="model">openacademy.partner</field>
+            <field name="inherit_id" ref="partner_instructor_form_view"/>
+            <field name="arch" type="xml">
+                <field name="instructor" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                <xpath expr="//field[@name='instructor'][last()]" position="after">
+                    <field name="customer"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_instructor_tree_view">
+            <field name="name">partner.instructor.tree</field>
+            <field name="model">openacademy.partner</field>
+            <field name="arch" type="xml">
+                <tree string="Partner tree">
+                    <field name="name"/>
+                    <field name="website"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="contact_list_action">
+            <field name="name">Contacts</field>
+            <field name="res_model">openacademy.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="configuration_menu" name="Configuration"
+                  parent="main_openacademy_menu"/>
+        <menuitem id="contact_menu" name="Contacts"
+                  parent="configuration_menu"
+                  action="contact_list_action"/>
+
+        <record model="ir.actions.act_window" id="contact_cat_list_action">
+            <field name="name">Contact Tags</field>
+            <field name="res_model">res.partner.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="contact_cat_menu" name="Contact Tags"
+                  parent="configuration_menu"
+                  action="contact_cat_list_action"/>
+
+        <record model="res.partner.category" id="teacher1">
+            <field name="name">Teacher / Level 1</field>
+        </record>
+        <record model="res.partner.category" id="teacher2">
+            <field name="name">Teacher / Level 2</field>
+        </record>
+</odoo>

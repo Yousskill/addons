@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_landscape,landscape.user,model_project_landscape,group_cmdb_manager,1,1,1,1
+access_landscape_user,landscape.user,model_project_landscape,group_cmdb_user,1,0,0,0
+access_module,module.user,model_project_module,group_cmdb_manager,1,1,1,1
+access_module_user,module.user,model_project_module,group_cmdb_user,1,0,0,0
+access_systeme,systeme.user,model_systeme,group_cmdb_manager,1,1,1,1
+access_systeme_user,systeme.user,model_systeme,group_cmdb_user,1,0,0,0
+access_prinscreen,printscreen.user,model_printscreen,group_cmdb_manager,1,1,1,1
+access_prinscreen_user,printscreen.user,model_printscreen,group_cmdb_user,1,0,0,0
+access_serveur,serveur.user,model_serveur,group_cmdb_manager,1,1,1,1
+access_serveur_user,serveur.user,model_serveur,group_cmdb_user,1,0,0,0
+access_database,database.user,model_database,group_cmdb_manager,1,1,1,1
+access_database_user,database.user,model_database,group_cmdb_user,1,0,0,0
+access_database_server,database.server.user,model_database_server,group_cmdb_manager,1,1,1,1d
+access_database_server_user,database.server.user,model_database_server,group_cmdb_user,1,0,0,0

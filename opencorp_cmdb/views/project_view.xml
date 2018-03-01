@@ -1,0 +1,68 @@
+<openerp>
+    <data>
+
+
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">kanban</field>
+            <field name="act_window_id" ref="project.action_view_task"/>
+        </record>
+
+         <record id="edit_project" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+             <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <newline/>
+                    <field name="landscape_id" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb.group_cmdb_manager"/>
+                    <newline/>
+                    <field name="module_ids" widget="many2many_tags" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb.group_cmdb_manager"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <filter string="Assignation Month" position="after">
+                    <filter string="Module" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb.group_cmdb_manager" context="{'group_by':'module_id'}"/>
+                </filter>
+            </field>
+        </record>
+
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="module_id" invisible="1" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdbgroup_cmdb_manager"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="module_id" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb,group_cmdb_manager"/>
+                </field>
+
+                <field name="description" position="after">
+                    <label for="printscreen_ids" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb.group_cmdb_manager"/>
+                    <field name="printscreen_ids" groups="opencorp_cmdb.group_cmdb_user,opencorp_cmdb.group_cmdb_manager"  nolabel="1" colspan="4">
+                        <tree string="Printscreen" editable="bottom">
+                            <field name="name" required="1"/>
+                            <field name="attach"/>
+                        </tree>
+                    </field>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
